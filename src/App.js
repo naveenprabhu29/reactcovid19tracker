@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import Columns from 'react-columns';
 import Form from 'react-bootstrap/Form';
+import ReactGa from 'react-ga';
 
 
 
@@ -14,9 +15,12 @@ function App() {
   const [result,setResult]=useState([]);
   const [searchRes,setSearchRes]=useState("");
   useEffect(()=>{
+
+    ReactGa.initialize('G-D4V29PHVG5'); 
+    ReactGa.pageview('/');
     axios.all([
-        axios.get('https://coronavirus-19-api.herokuapp.com/all '),
-        axios.get('https://corona.lmao.ninja/v2/countries?yesterday&')
+        axios.get('https://corona.lmao.ninja/v2/all'),
+        axios.get('https://corona.lmao.ninja/v2/countries')
 
       ]).then(res=>{
       setLatest(res[0].data);
@@ -53,7 +57,8 @@ function App() {
   </Card>
     )
   });
-  
+  const timer=new Date(parseInt(latest.updated));
+  const lastUpdated=timer.toLocaleString();
 
     var queries = [{
     columns: 2,
@@ -77,7 +82,7 @@ function App() {
       </Card.Text>
     </Card.Body>
     <Card.Footer>
-      <small>Till { Date().toLocaleString()} </small>
+      <small>Last Update {lastUpdated} </small>
     </Card.Footer>
   </Card>
   <Card  className='text-center'
@@ -91,7 +96,7 @@ function App() {
       </Card.Text>
     </Card.Body>
     <Card.Footer>
-      <small>Till { Date().toLocaleString()} </small>
+      <small>Last Update {lastUpdated} </small>
     </Card.Footer>
   </Card>
   <Card className='text-center'
@@ -104,7 +109,7 @@ function App() {
       </Card.Text>
     </Card.Body>
     <Card.Footer>
-      <small>Till { Date().toLocaleString()} </small>
+      <small>Last Update {lastUpdated}</small>
     </Card.Footer>
   </Card>
 </CardDeck><br/>
