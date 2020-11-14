@@ -2,6 +2,7 @@
   "name": "reactcovid19tracker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://naveenprabhu29.github.io/reactcovid19tracker/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
