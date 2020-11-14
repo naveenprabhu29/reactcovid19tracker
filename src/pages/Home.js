@@ -27,6 +27,7 @@ function Home() {
         axios.get('https://corona.lmao.ninja/v2/countries')
 
       ]).then(res=>{
+        
       setLatest(res[0].data);
       setResult(res[1].data);
       setLoading(false);
@@ -42,21 +43,21 @@ function Home() {
   const countries=filterCountry.map((data,i)=>{
     return(
      
-      <Card key={i} className='text-center' bg='secondary' text='white'
+      <Card key={i} className='text-center' bg='white' text='black'
   border="dark" style={{margin:'10px'}}  >
     <Card.Img variant="top" src={data.countryInfo.flag} style={{height:'300px'}}/>
-    <Card.Body>
+    <Card.Body style={{color:'black'}}>
     <Card.Title>{data.country}</Card.Title>
-      <Card.Text>
+      <Card.Text style={{color:'black'}}>
         Cases    {data.cases}
               
       </Card.Text>
-      <Card.Text> Deaths   {data.deaths}</Card.Text>
-      <Card.Text> Recovered {data.recovered}</Card.Text>
-      <Card.Text> TodayCases {data.todayCases}</Card.Text>
-      <Card.Text> TodayDeaths {data.todayDeaths}</Card.Text>
-      <Card.Text>Active {data.active}</Card.Text>
-      <Card.Text>Critical {data.critical}</Card.Text>
+      <Card.Text style={{color:'black'}}> Deaths   {data.deaths}</Card.Text>
+      <Card.Text style={{color:'black'}}> Recovered {data.recovered}</Card.Text>
+      <Card.Text style={{color:'black'}}> TodayCases {data.todayCases}</Card.Text>
+      <Card.Text style={{color:'black'}}> TodayDeaths {data.todayDeaths}</Card.Text>
+      <Card.Text style={{color:'black'}}>Active {data.active}</Card.Text>
+      <Card.Text style={{color:'black'}}>Critical {data.critical}</Card.Text>
     </Card.Body>
     
   </Card>
@@ -87,6 +88,7 @@ const HandleSearchBar = () =>{
 
 
   return (
+    <div style={{display:'flex',justifyContent:'center'}}>
     <div className='home-bg'>
        <div  style={{display:'flex' , justifyContent:'center'}}> <BeatLoader
          
@@ -95,14 +97,14 @@ const HandleSearchBar = () =>{
           loading={loading  }
         /></div>
       <br/>
-               <h3 style={{textAlign:'center'}}>Covid-19 Live Stats<sub>naveenprabhu</sub></h3>
+               <h3 style={{textAlign:'center'}}>Covid-19 Live Stats<sub>np</sub></h3>
       <br/>
         <CardDeck>
   <Card className='text-center' bg='warning' text='white'
   border="dark" style={{margin:'10px'}}  >
     <Card.Body>
       <Card.Title>Cases</Card.Title>
-      <Card.Text>
+      <Card.Text style={{color:'white'}}>
         <NumberFormat thousandSeparator={true} displayType='text' value={latest.cases}/>
       </Card.Text>
     </Card.Body>
@@ -116,7 +118,7 @@ const HandleSearchBar = () =>{
   style={{margin:'10px'}} >
     <Card.Body>
       <Card.Title>Deaths</Card.Title>
-      <Card.Text>
+      <Card.Text style={{color:'white'}}>
         <NumberFormat thousandSeparator={true} thousandsGroupStyle='lakh' displayType='text' value={latest.deaths}/>
       </Card.Text>
     </Card.Body>
@@ -129,7 +131,7 @@ const HandleSearchBar = () =>{
   border="dark"  style={{margin:'10px'}} >
     <Card.Body>
       <Card.Title>Recovered</Card.Title>
-      <Card.Text>
+      <Card.Text style={{color:'white'}}>
  <NumberFormat thousandSeparator={true} thousandsGroupStyle='lakh' displayType='text' value={latest.recovered}/>
 
       </Card.Text>
@@ -140,7 +142,7 @@ const HandleSearchBar = () =>{
   </Card>
 </CardDeck><br/>
   <Form>
-  <Form.Group controlId="formGroupSearch" style={{width:'50%',marginLeft:'30%'}}>
+  <Form.Group controlId="formGroupSearch" style={{width:'50%',marginLeft:'30%',border:'3px solid black'}}>
   
     <Form.Control  type="text" 
       placeholder="Search a Country"
@@ -151,6 +153,7 @@ const HandleSearchBar = () =>{
   
 </Form>
 <Columns queries={queries}>{countries}</Columns>
+    </div>
     </div>
   );
 }

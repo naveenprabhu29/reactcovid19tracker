@@ -9,8 +9,8 @@ const Nav=()=>{
         
           <Link to="/"><div style={{color:'white',textDecoration:'none'}}>Home</div></Link>
           <ul className='nav-links'>
-          <Link to="/about"><div style={{color:'white',textDecoration:'none'}}>About</div></Link>
-          <Link to="/Graph"><div style={{color:'white',textDecoration:'none'}}>Graph</div></Link>
+         <li> <Link to="/about"><div style={{color:'white',textDecoration:'none'}}>About</div></Link></li>
+          <li><Link to="/Graph"><div style={{color:'white',textDecoration:'none'}}>Graph</div></Link></li>
           </ul>
       </div>
     )
