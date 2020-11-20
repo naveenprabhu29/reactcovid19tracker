@@ -75,7 +75,7 @@ function Home() {
   }];
 
 
-
+//For Google Analytics and gives data to the GA
 const HandleSearchBar = () =>{
   ReactGA.event({
     category:'Search bar',
